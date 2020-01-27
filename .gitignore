@@ -1,0 +1,7 @@
+# project
+ansiterra/.terraform
+ansiterra/*.json
+# ansiterra/*.tfstate*
+
+# misc
+.DS_Store
