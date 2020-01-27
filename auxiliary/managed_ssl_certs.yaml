@@ -1,0 +1,19 @@
+---
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: prom-eopio-ssl-cert  # add this to ingress before running this yaml
+  namespace: prometheus
+spec:
+  domains:
+    - prom.eopio.com
+
+---
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: spin-eopio-ssl-cert  # add this to ingress before running this yaml
+  namespace: spinnaker
+spec:
+  domains:
+    - spin.eopio.com

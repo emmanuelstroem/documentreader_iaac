@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: spinnaker-ingress
+    networking.gke.io/managed-certificates: spin-eopio-ssl-cert
+  name: spinnaker-ingress
+  namespace: spinnaker
+spec:
+  backend:
+    serviceName: spin-deck
+    servicePort: 9000
+  rules:
+  - host: spin.eopio.com
+    http:
+      paths:
+      - backend:
+          serviceName: spin-deck
+          servicePort: 9000
+        path: /*
+      - backend:
+          serviceName: spin-gate
+          servicePort: 8084
+        path: /webhooks/*
+      - backend:
+          serviceName: spin-gate
+          servicePort: 8084
+        path: /health
